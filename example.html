@@ -1,0 +1,15 @@
+<html>
+<head>
+    <link rel="stylesheet" href="src/uspsAddressAutocomplete.css">
+    <script src="dist/uspsAddressAutocomplete.js?3423434442"></script>
+
+</head>
+    <input id="address1" placeholder="address" />
+    <script>
+        new uspsAddressAutocomplete({
+          selector: "#address1",
+          publicKey: '22976803953563528',
+          onSelect: (item) => { alert(JSON.stringify(item)) }
+        })
+    </script>
+</html>
