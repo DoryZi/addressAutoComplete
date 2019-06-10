@@ -4,13 +4,24 @@
     <script src="dist/uspsAddressAutocomplete.js?3423434442"></script>
 
 </head>
-    <input id="address1" placeholder="address" />
-    <script>
-        new uspsAddressAutocomplete({
-          selector: "#address1",
-          publicKey: '22976803953563528',
-          uspsBeta: true,
-          onSelect: (item) => { alert(JSON.stringify(item)) }
-        })
+    <input id="address1" placeholder="usps address beta" /> <br />
+    <input id="address2" placeholder="general address , release not beta" />
+     <script>
+         window.onload = () => {
+            new uspsAddressAutocomplete({
+              selector: "#address1",
+              publicKey: '22976803953563528',
+              uspsBeta: true,
+              showOnFocus: true,
+              onSelect: (item) => { alert(JSON.stringify(item)) }
+            })
+
+            new uspsAddressAutocomplete({
+              selector: "#address2",
+              publicKey: '22976803953563528',
+              showOnFocus: true,
+              onSelect: (item) => { alert(JSON.stringify(item)) }
+            })
+         }
     </script>
 </html>

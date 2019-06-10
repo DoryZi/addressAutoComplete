@@ -37,7 +37,7 @@ export default class uspsAddressAutoComplete {
       return []
     }
     const query = encodeURIComponent(inputText)
-    const url = `https://us-autocomplete.api.smartystreets.com/${this.uspsBeta ? 'lookup' : suggest }?auth-id=${this.publicKey}&prefix=${query}`
+    const url = `https://us-autocomplete.api.smartystreets.com/${this.uspsBeta ? 'lookup' : 'suggest' }?auth-id=${this.publicKey}&prefix=${query}`
     this.getUrl(url, (error, result) => {
       if (error) {
         throw new Error(error)
