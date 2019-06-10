@@ -19,6 +19,7 @@ export default class uspsAddressAutoComplete {
     this.autoComplete = new autocomplete(config)
     this.publicKey = config.publicKey
     this.xhr = new XMLHttpRequest();
+    this.uspsBeta = config.uspsBeta
     delete config.publicKey
   }
 
@@ -36,7 +37,7 @@ export default class uspsAddressAutoComplete {
       return []
     }
     const query = encodeURIComponent(inputText)
-    const url = `https://us-autocomplete.api.smartystreets.com/suggest?auth-id=${this.publicKey}&prefix=${query}`
+    const url = `https://us-autocomplete.api.smartystreets.com/${this.uspsBeta ? 'lookup' : suggest }?auth-id=${this.publicKey}&prefix=${query}`
     this.getUrl(url, (error, result) => {
       if (error) {
         throw new Error(error)
@@ -70,12 +71,19 @@ export default class uspsAddressAutoComplete {
     address1.className = 'address1'
     address1.innerText = item.street_line
     rowContainer.appendChild(address1)
-    const text = document.createTextNode(item.text.substring(item.street_line.length))
+    const text = document.createTextNode((this.uspsBeta) ?
+      `${item.city} ${item.state} ${item.zipcode}` :
+      item.text.substring(item.street_line.length)
+    )
     rowContainer.appendChild(text)
     return rowContainer
   }
 
   onSelect = (item) => {
+    if (this.uspsBeta) {
+      this.callerOnSelect(item)
+      return
+    }
     this.getUrl(
       `https://us-street.api.smartystreets.com/street-address?auth-id=${this.publicKey}&street=${encodeURIComponent(item.street_line)}&city=${encodeURIComponent(item.city)}&state=${encodeURIComponent(item.state)}`,
       (error, results) => {
