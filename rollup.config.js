@@ -26,7 +26,7 @@ export default [
         presets: ["@babel/preset-env"],
         plugins: ["@babel/proposal-class-properties"]
       }),
-      //uglify(),
+      uglify(),
       css({
         raw: 'src/uspsAddressAutocomplete.css',
         minified: 'dist/uspsAddressAutocomplete.css.min.css',
@@ -52,7 +52,7 @@ export default [
         presets: ["@babel/preset-env"],
         plugins: ["@babel/proposal-class-properties"]
       }),
-      //uglify(),
+      uglify(),
       css({
         raw: 'src/uspsAddressAutocomplete.css',
         minified: 'dist/uspsAddressAutocomplete.css.min.css',
