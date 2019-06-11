@@ -1,11 +1,12 @@
 {
-  "name": "uspsAddressAutocomplete",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "address_autocomplete",
+  "version": "1.0.3",
+  "main": "dist/uspsAddressAutocomplete.js",
   "author": "Dory Zidon",
   "license": "MIT",
   "scripts": {
-    "build": "rollup -c"
+    "build": "rollup -c",
+    "publish-pkg": "yarn build && npm publish"
   },
   "dependencies": {
     "@babel/core": "^7.4.5",
