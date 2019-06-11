@@ -10,7 +10,7 @@
          window.onload = () => {
             new uspsAddressAutocomplete({
               selector: "#address1",
-              publicKey: '22976803953563528',
+              publicKey: '<yourpubkey>',
               uspsBeta: true,
               showOnFocus: true,
               onSelect: (item) => { alert(JSON.stringify(item)) }
@@ -18,7 +18,7 @@
 
             new uspsAddressAutocomplete({
               selector: "#address2",
-              publicKey: '22976803953563528',
+              publicKey: '<yourpubkey>',
               showOnFocus: true,
               onSelect: (item) => { alert(JSON.stringify(item)) }
             })
