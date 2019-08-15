@@ -37,8 +37,10 @@ export default class uspsAddressAutoComplete {
       return []
     }
     const query = encodeURIComponent(inputText)
-    const url = `https://us-autocomplete.api.smartystreets.com/${this.uspsBeta ? 'lookup' : 'suggest' }?auth-id=${this.publicKey}&prefix=${query}`
-    this.getUrl(url, (error, result) => {
+
+    const betaUrl = `https://us-autocomplete-pro.api.smartystreets.com/lookup?auth-id=${this.publicKey}&search=${query}`
+    const url = `https://us-autocomplete.api.smartystreets.com/suggest?auth-id=${this.publicKey}&prefix=${query}`
+    this.getUrl((this.uspsBeta) ? betaUrl : url, (error, result) => {
       if (error) {
         throw new Error(error)
       }
@@ -72,7 +74,7 @@ export default class uspsAddressAutoComplete {
     address1.innerText = item.street_line
     rowContainer.appendChild(address1)
     const text = document.createTextNode((this.uspsBeta) ?
-      `${item.city} ${item.state} ${item.zipcode}` :
+      `${item.city} ${item.state} ${(item.zipcode) ? item.zipcode : ''}` :
       item.text.substring(item.street_line.length)
     )
     rowContainer.appendChild(text)
