@@ -1,6 +1,6 @@
 {
   "name": "address_autocomplete",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "main": "dist/uspsAddressAutocomplete.js",
   "author": "Dory Zidon",
   "license": "MIT",
